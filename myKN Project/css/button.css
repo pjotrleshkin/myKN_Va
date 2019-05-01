@@ -1,0 +1,7 @@
+/*next step button styling */
+.next-step {
+    background-color: blue;
+    border: solid 1px grey;
+    color: white;
+    text-align: center;
+  }

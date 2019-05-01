@@ -1,0 +1,71 @@
+/*WindowOnload Fade-In*/
+
+@keyframes chainReaction {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.parallax-window .welcome-page-div {
+  animation: chainReaction 3s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+  text-align: center;
+  font-family: Beautiful ES;
+  font-size: 30px;
+  font-weight: lighter;
+}
+
+
+/*initial state  */ 
+.parallax-window .illustration {
+  animation: chainReaction 3s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+  text-align: center;
+  font-family: Beautiful ES;
+  font-size: 30px;
+  font-weight: lighter;
+}
+
+
+/* question text fade-in timings */
+.parallax-window .welcome-page-div:nth-child(1) {
+  padding: 0;
+  animation-delay: 0.75s;
+}
+.parallax-window .welcome-page-div:nth-child(2) {
+  padding: 0;
+  animation-delay: 1.5s;
+}
+.parallax-window .welcome-page-div:nth-child(3) {
+  animation-delay: 2.25s;
+}
+.parallax-window .welcome-page-div:nth-child(4) {
+  animation-delay: 3s;
+}
+
+
+/*Ilustration fade-in timings */
+.parallax-window .illustration:nth-child(1){
+  animation-delay: 0.1s;
+}
+.parallax-window .illustration:nth-child(2){
+  animation-delay: 1s;
+}
+.parallax-window .illustration:nth-child(3){
+  animation-delay: 2s;
+}
+.parallax-window .illustration:nth-child(4){
+  animation-delay: 3s;
+}
+/*WindowOnload Fade-In*/
+
+.question-text{
+  text-align: center;
+}
+
+
