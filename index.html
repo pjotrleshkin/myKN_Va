@@ -84,6 +84,21 @@ html {overflow-y: auto}
   text-align: center;
   vertical-align: center;
 }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  text-align: center; 
+  vertical-align: middle;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
         </style>
       </head>
 
@@ -131,6 +146,7 @@ html {overflow-y: auto}
                       </li>
                     </ul>
                   </div>
+             
                     <!-- The two navigation buttons -->
                     <!-- Note: prev is hidden on first question -->
                     
@@ -161,11 +177,12 @@ html {overflow-y: auto}
                             color="white"
                             class="mb-0"
                           ></v-progress-linear>
-                        </v-card-text>
+                        </v-card-text>You can test the project at https://pjotrleshkin.github.io/myknvark/</v-card-text>
                       </v-card>
                       </v-dialog>
                     </v-layout>
                 </div>
+              </div>
    <!-- no-animation next button, calls 'next' method
                     <v-btn v-on:click="next" color="#4bafe8" block >next</v-btn>
                     </div>
@@ -175,19 +192,66 @@ html {overflow-y: auto}
                 </div>
                 <div v-show="questionIndex === quiz.questions.length">
                   <h2 class="text-md-center text-sm-center  text-xs-center">
-                  Quiz finished
+                  Quiz finished successfully.
                 </h2>
                   <p class="text-md-center text-sm-center  text-xs-center">
-                    Audialscore: {{Audialscore()}} / {{ quiz.questions.length }}
-                    Visual: {{Visualscore()}} / {{ quiz.questions.length }}
-                    kinestetical score: {{Kinesteticalscore()}} / {{ quiz.questions.length }}
+                    <table>
+                      <tr>
+                        <th>Reply matrix dimension</th>
+                        <th>Replies number</th>
+                      
+                      </tr>
+                      <tr>
+                        <td>Audial</td>
+                        <td>{{Audialscore()}} / {{ quiz.questions.length }}</td>
+                      </tr>
+                      <tr>
+                        <td>Visual</td>
+                        <td>{{Visualscore()}} / {{ quiz.questions.length }}</td>
+                      </tr>
+                      <tr>
+                        <td>Kinestetical</td>
+                        <td>{{Kinesteticalscore()}} / {{ quiz.questions.length }}</td>
+                      </tr>
+                      </table>
                     <br>
                     <br>
                     <br>
-                    Array of your replies: {{Totalscore()}}
-                    
+                    <br>
+                   
                   </p>
-                
+                  <table>
+                    <tr>
+                      <th>Question number</th>
+                      <th>Reply value selected</th>
+                    <th>Chronbach alpha of reply</th>
+                    </tr>
+                    <tr>
+                      <td>1st</td>
+                      <td>{{Totalscore()[0]}}</td>
+                      <td>{{Cronbach()[0][userAudial[0]]}}</td>
+                    </tr>
+                    <tr>
+                      <td>2nd</td>
+                      <td>{{Totalscore()[1]}}</td>
+                      <td>{{Cronbach()[1][userAudial[1]]}}</td>
+                    </tr>
+                    <tr>
+                      <td>3rd</td>
+                      <td>{{Totalscore()[2]}}</td>
+                      <td>{{Cronbach()[2][userAudial[2]]}}</td>
+                    </tr>
+                    <tr>
+                      <td>4th</td>
+                      <td>{{Totalscore()[3]}}</td>
+                      <td>{{Cronbach()[3][userAudial[3]]}}</td>
+                    </tr>
+                    <tr>
+                      <td>5th</td>
+                      <td>{{Totalscore()[4]}}</td>
+                      <td>{{Cronbach()[4][userAudial[4]]}}</td>
+                    </tr>
+                  </table>
             </v-container>
           </v-content>
          </div>
@@ -259,8 +323,22 @@ html {overflow-y: auto}
           // An array created with "false" values for each question
           // It means: "did the user answered correctly to the question n?" "no".
           userAudial:Array(quiz.questions.length).fill(false),
-          dialog: false
+          dialog: false,
+      
+      
+       // questions from questionaire - 5,2,13,11,7
+       // replies go in following way:
+       // 0th - Read
+       // 1st - Audial
+       // 2nd - Visual
+       // 3rd - kinestetical
+      firstQuestionValues: [0.71,0.62,0.62,0.79],
+       secondQuestionValues: [0.73,0.59,0.65,0.78],
+       thirdQuestionValues: [0.77,0.67,0.62,0.79],
+       fourthQuestionValues: [0.74,0.59,0.60,0.8],
+       fifthQuestionValues: [0.8,0.67,0.65,0.79]
         },
+
         watch: {
     dialog (val) {
       if (!val) return
@@ -315,20 +393,59 @@ html {overflow-y: auto}
     },
     remove: function () {
       this.items.splice(this.randomIndex(), 1)
-    }
+    },
+    Cronbach: function (){
+
+
+      
+      return [this.firstQuestionValues,this.secondQuestionValues,this.thirdQuestionValues,this.fourthQuestionValues,this.fifthQuestionValues];
+    },
+    FilterFirst: function() {
+      //let repliesArray1 =  {'one':this.userAudial[0], 'two':this.userAudial[1],'three':this.userAudial[2],'four':this.userAudial[3],'five':this.userAudial[4]};
+           // return repliesArray1.filter(function(val) {
+            //   return val ===1});
+var repliesMegaArray = [this.userAudial[0],this.userAudial[1],this.userAudial[2],this.userAudial[3],this.userAudial[4]];
+if (repliesMegaArray[0] === 1) {
+  var firstQAlpha =  firstQuestionValues[1];
+}
+if (repliesMegaArray[0] === 2) {
+  var firstQAlpha =  firstQuestionValues[1];
+}
+if (repliesMegaArray[0] === 3) {
+  var firstQAlpha =  firstQuestionValues[1];
+}
+
+/*
+elseif(repliesMegaArray[0] === 2){var firstQAlpha =  firstQuestionValues[2] }
+elseif(repliesMegaArray[0] === 3){ var firstQAlpha =  firstQuestionValues[3] }
+else{ var firstQAlpha =  'error' };
+*/
+return firstQAlpha;
+
           },
+
+    FinalResult: function () {
+      let repliesArray =  {'one':this.userAudial[0], 'two':this.userAudial[1],'three':this.userAudial[2],'four':this.userAudial[3],'five':this.userAudial[4]};
+      let AudialValues;
+      let VisualValues;
+      let KinestValues;
+      
+      let alphaValues = [this.firstQuestionValues[this.userAudial[0]],this.secondQuestionValues[this.userAudial[1]]];
+
+      //var result = repliesArray.filter(reply => reply = 1);
+
+       return repliesArray['one'];
+    }
+
+          },
+//insert code here (Vue)
 
       });
 
 
 
 
+
     }
-
-    
   </script>
-
-
-
-
 </body>
