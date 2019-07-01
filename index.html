@@ -253,8 +253,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
                       <td>{{Cronbach()[4][userAudial[4]]}}</td>
                     </tr>
                   </table>
-            </v-container>
-          </v-content>
+                  <p>you will be  redirected to the course page after 5 seconds {{Redirect()}}</p>
          </div>
    </v-app>
   </div>
@@ -367,6 +366,15 @@ tr:nth-child(even) {background-color: #f2f2f2;}
             this.questionIndex--;
 
           },
+          Redirect: function (){
+            var that = this;
+            qindex = that.questionIndex;
+            console.log(qindex);
+            if(qindex === 5){
+                setTimeout(function(){window.location='https://sync0n.github.io/course_desc.html'},5000);
+            }
+           // 
+          },
           // Return first questions count in userResponses
           Audialscore: function() {
             return this.userAudial.filter(function(val) {
@@ -439,6 +447,7 @@ return firstQAlpha;
     }
 
           },
+
 //insert code here (Vue)
 
       });
@@ -447,6 +456,9 @@ return firstQAlpha;
 
 
 
-    }
+    };
+
+
+ 
   </script>
 </body>
