@@ -2,7 +2,7 @@
     <head>
         <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
         <link href = 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel = 'stylesheet'>
-        <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/vuetify/1.5.14/vuetify.css" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
         <script src="https://use.fontawesome.com/69b4301ba7.js"></script>
         <style>
@@ -106,7 +106,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 <body >
   <div id = body></div>
   <div id="app">
-      <v-app light>
+      <v-app >
         <!---  <v-toolbar app dark >
             <v-toolbar-title><i class="fas fa-anchor" style = 'color: #4bafe8'> </i>Kuehne+Nagel </v-toolbar-title>
           </v-toolbar>
@@ -253,14 +253,15 @@ tr:nth-child(even) {background-color: #f2f2f2;}
                       <td>{{Cronbach()[4][userAudial[4]]}}</td>
                     </tr>
                   </table>
-                  <p>you will be  redirected to the course page after 5 seconds {{Redirect()}}</p>
+            </v-container>
+          </v-content>
          </div>
    </v-app>
   </div>
   
   <!-- Load Vue script -->
   <script src="https://vuejs.org/js/vue.js"></script>
-  <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/1.5.14/vuetify.js"></script>
   <!-- On load, init Vue -->
   <script>
 
@@ -343,8 +344,8 @@ tr:nth-child(even) {background-color: #f2f2f2;}
     dialog (val) {
       if (!val) return
 
-      setTimeout(() => (this.dialog = false), 2000);
-      setTimeout(() => (this.questionIndex++), 1800);
+      setTimeout(() => (this.dialog = false), 4000);
+      setTimeout(() => (this.questionIndex++), 3800);
 
     }
   },
@@ -365,15 +366,6 @@ tr:nth-child(even) {background-color: #f2f2f2;}
           prev: function() {
             this.questionIndex--;
 
-          },
-          Redirect: function (){
-            var that = this;
-            qindex = that.questionIndex;
-            console.log(qindex);
-            if(qindex === 5){
-                setTimeout(function(){window.location='https://sync0n.github.io/course_desc.html'},5000);
-            }
-           // 
           },
           // Return first questions count in userResponses
           Audialscore: function() {
@@ -447,7 +439,6 @@ return firstQAlpha;
     }
 
           },
-
 //insert code here (Vue)
 
       });
@@ -456,9 +447,6 @@ return firstQAlpha;
 
 
 
-    };
-
-
- 
+    }
   </script>
 </body>
