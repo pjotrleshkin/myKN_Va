@@ -21,7 +21,7 @@
      border-radius: 30px;
      border: #4bafe8 solid 1px;
      cursor: pointer;     
-     margin-right: 7px;
+     
      outline: none;
 }
 .form-radio:checked::before
@@ -99,6 +99,8 @@ th, td {
 }
 
 tr:nth-child(even) {background-color: #f2f2f2;}
+
+
         </style>
       </head>
 
@@ -129,23 +131,27 @@ tr:nth-child(even) {background-color: #f2f2f2;}
                   <div v-show="index === questionIndex">
                     <h2 class="text-md-center text-sm-center text-xs-center">{{ question.text }}</h2>
                     
-                    <div class="text-md-center text-sm-center  text-xs-center"> 
-                    <ul style="list-style: none">
-                      
-                      <li v-for="response in question.responses">
-                        <label>
-                          <!-- The radio button has three new directives -->
-                          <!-- v-bind:value sets "value" to selected one -->
-                          <!-- v-bind:name sets "name" to question index to group answers by question type -->
-                          <!-- v-model creates binding with userResponses -->
-                          <input type="radio" class = 'form-radio'
-                                  v-bind:value="response.audial"
-                                 v-bind:name="index"
-                                 v-model="userAudial[index]"
-                                 > {{response.text}}
-                        </label>
-                      </li>
-                    </ul>
+                    <div class="text-md-center text-sm-center  text-xs-center" style = 'border: orange solid 3px; align-content:center'> 
+
+
+                      <table style = 'border: solid red 3px; width:50%; margin-left:25%'>
+                        <tr v-for="response in question.responses" style = 'align-content: left; width:50%; border: solid green 1px'> 
+                          <td style = 'align-content: left;'> 
+
+                              
+
+                             <p  class = 'response_text' style = 'text-align: left !important; margin-left:33%'>
+                                <input type="radio" class = 'form-radio'
+                                v-bind:value="response.audial"
+                               v-bind:name="index"
+                               v-model="userAudial[index]"
+                              
+                               >
+                              {{response.text}}</p>
+                          </td>  
+                        
+                        </tr>
+                      </table>
                   </div>
              
                     <!-- The two navigation buttons -->
