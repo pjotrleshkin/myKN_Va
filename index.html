@@ -84,6 +84,9 @@ html {overflow-y: auto}
   text-align: center;
   vertical-align: center;
 }
+.kuehne-color {
+  color:  #4bafe8;
+}
 
 table {
   border-collapse: collapse;
@@ -190,17 +193,23 @@ tr:nth-child(even) {background-color: #f2f2f2;}
                     </v-layout>
                 </div>
               </div>
-   <!-- no-animation next button, calls 'next' method
-                    <v-btn v-on:click="next" color="#4bafe8" block >next</v-btn>
-                    </div>
-                  -->
 
                   </div>
                 </div>
                 <div v-show="questionIndex === quiz.questions.length">
                   <h2 class="text-md-center text-sm-center  text-xs-center">
-                  Quiz finished successfully.
+                  Congratulations! You had successfully finished the quiz.
                 </h2>
+                <center>
+                    <IMG SRC="https://media.giphy.com/media/NTDh6VHU8WaMfxTHXC/giphy.gif">
+                
+                      <h3> Your learning style is <h3 class = 'kuehne-color'>Visual</h3>.</h3> 
+                      <p>You will be redirected to the course page designed specially for you after 5 seconds, or you can click here.</p>
+
+                   
+
+                </center>
+                <!--
                   <p class="text-md-center text-sm-center  text-xs-center">
                     <table>
                       <tr>
@@ -259,9 +268,13 @@ tr:nth-child(even) {background-color: #f2f2f2;}
                       <td>{{Cronbach()[4][userAudial[4]]}}</td>
                     </tr>
                   </table>
+
+                  -->
             </v-container>
           </v-content>
+          
          </div>
+         
    </v-app>
   </div>
   
