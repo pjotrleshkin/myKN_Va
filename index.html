@@ -1,5 +1,14 @@
 <html >
     <head>
+      <title>VAK questionaire</title>
+        <meta charset="utf-8"/>
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+<link rel="icon" href="favicon.ico" type="image/x-icon"/>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+
         <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
         <link href = 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel = 'stylesheet'>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/vuetify/1.5.14/vuetify.css" rel="stylesheet">
@@ -103,41 +112,35 @@ th, td {
   vertical-align: middle;
 }
 tr:nth-child(even) {background-color: #f2f2f2;}
-
-
                     
         </style>
       </head>
-
-
 <body >
   <div id = body></div>
   <div id="app">
-      <v-app >
-        <!---  <v-toolbar app dark >
-            <v-toolbar-title><i class="fas fa-anchor" style = 'color: #4bafe8'> </i>Kuehne+Nagel </v-toolbar-title>
-          </v-toolbar>
-          -->
+      <v-app>
           <v-content>
-            <v-container fluid>
-             
+            <v-container fluid>       
                 <!--
 <video width="320" height="240" autoplay="autoplay" dir="ltr" style = 'display: block; margin: 0 auto'>   
                   <source src="https://connections.mykn.community/files/basic/anonymous/api/library/d598c3ce-d3c8-49b0-a6c8-52567602bcdd/document/6c9789a6-3674-4ac8-a3d8-2f06bd89caae/media/SampleVideo_1280x720_2mb.mp4?logDownload=true&downloadType=view" type="video/mp4">  
               </video>
                 -->
-
 <div id = 'modal-container' class="modal-container"></div>
                     <!-- index is used to check with current question index -->
                 <div v-for="(question, index) in quiz.questions">
                   <!-- Hide all questions, show only the one with index === to current question index -->
                   <div v-show="index === questionIndex">
-                    <h1 class='heading text-md-center text-sm-center  text-xs-right' style = 'border: #4bafe8 solid 1px; margin-bottom: 50px; border-radius:30px'>  </i>{{ quiz.title }} . Question {{questionIndex}} of 5</h1>
-                                        <v-btn  color="#4bafe8"  v-if="questionIndex > 1" v-on:click="prev" style = 'color:white;display: block; min-width: 15%;border-radius: 15px;' >
+                    <div class='heading text-md-center text-sm-center  text-xs-right' style = 'border: #4bafe8 solid 1px; margin-bottom: 40px; border-radius:30px'>
+                      <h1 > {{ quiz.title }}</h1>
+                      <br>
+                      <h2>Question {{questionIndex +1}} of 5</h2>
+                    </div>
+                                        <v-btn  color="#4bafe8"  v-if="questionIndex >= 1" v-on:click="prev" style = 'color:white;display: block; min-width: 15%;border-radius: 15px;' >
                                                 <span><i class="fas fa-long-arrow-alt-left"> </i> Return to previous question</span>
                           </v-btn>
                           <br>
-                    <h2 class="text-md-center text-sm-center text-xs-center" style = 'margin-bottom: 25px'>{{ question.text }}</h2>
+                    <h2 class="text-md-center text-sm-center text-xs-center" style = 'margin-bottom: 40px; margin-left: 25%; margin-right:25%'>{{ question.text }}</h2>
                     
                     <div class="text-md-center text-sm-center  text-xs-center" style = 'align-content:center'> 
 
@@ -200,7 +203,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
                   </div>
                 </div>
                 <div v-show="questionIndex === quiz.questions.length" >
-                    <div class="text-md-center text-sm-center  text-xs-center" style = 'border: #4bafe8 solid 15px;  border-radius: 20px;'> 
+                    <div class="text-md-center text-sm-center  text-xs-center" style = 'border: #4bafe8 solid 15px;  border-radius: 20px; margin-top: 20px'> 
                   <h2>
                   Congratulations! You had successfully finished the quiz.
                 </h2>
@@ -215,11 +218,16 @@ tr:nth-child(even) {background-color: #f2f2f2;}
                 <h3 class = 'text-md-center text-sm-center  text-xs-center'> Your learning style is </h3>
                  <h1 class = 'kuehne-color text-md-center text-sm-center  text-xs-center'>Visual</h1>
             </div>
-            <button v-on:click="isHidden = !isHidden" color = 'blue'> For more sophisticated results please click here:</button>
+            <div class="text-md-center text-sm-center  text-xs-center">
+              <p style= 'margin-top:30px; margin-bottom:10%;'>For more sophisticated results please click
+                <button v-on:click="isHidden = !isHidden" style = 'color: #4bafe8'> here: </button>
+               </p>
+            </div>             
             <div>
                    
                     
-                    <div v-if="!isHidden">
+                    <div v-if="!isHidden" style = 'margin-bottom:10%'>
+                      
                             <p class="text-md-center text-sm-center  text-xs-center">
                                     <table>
                                       <tr>
@@ -229,7 +237,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
                                       </tr>
                                       <tr>
                                         <td>Audial</td>
-                                        <td>{{Audialscore()}} / {{ quiz.questions.length }}</td>
+                                        <td>{{Audialscore()}} / {{ quiz.questions.length}}</td>
                                       </tr>
                                       <tr>
                                         <td>Visual</td>
@@ -286,13 +294,14 @@ tr:nth-child(even) {background-color: #f2f2f2;}
                     
                     padless
                     absolute
+                    dark
                   >
                     <v-layout
                       justify-center
                       wrap
                     >
 
-                       <p style = 'text-align: center'>Thank you for completing the questionaire.you will be  redirected to the course page after 5 seconds, or you can click <a href = '' style = 'color:#4bafe8'>here</a>.</p> 
+                       <p style = 'text-align: center'>Thank you for completing the questionaire. You will be  redirected to the course page after 5 seconds, or you can click <a href = '' style = 'color:#4bafe8'>here</a>.</p> 
                        {{Redirect()}}
                      
                     </v-layout>
@@ -321,8 +330,9 @@ tr:nth-child(even) {background-color: #f2f2f2;}
       // Create a quiz object with a title and 5 questions.
       // A question has 3 answers.
       var quiz = {
-        title: 'Visual Audial Kinestetical test',
+        title: 'Visual Audial Kinestetical Test',
         questions: [
+        
           {
             text: "A group of tourists want to learn about the parks or wildlife reserves in your area. You would:",
             responses: [
@@ -362,6 +372,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
               {text: 'watching a demonstration.', audial: 3}
             ]
           }, 
+          
         ]
       };
             
@@ -370,7 +381,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
         data: {
           quiz: quiz,
           // Store current question index
-          questionIndex: 1,
+          questionIndex: 0,
           // An array created with "false" values for each question
           // It means: "did the user answered correctly to the question n?" "no".
           userAudial:Array(quiz.questions.length).fill(2),
@@ -403,7 +414,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
             qindex = that.questionIndex;
             console.log(qindex);
             if(qindex === 5){
-                setTimeout(function(){window.location='https://sync0n.github.io/course_desc.html'},5000);
+                setTimeout(function(){window.location='https://sync0n.github.io/course_desc.html'},30000);
             }
            // 
           },
@@ -485,9 +496,10 @@ return firstQAlpha;
       //var result = repliesArray.filter(reply => reply = 1);
        return repliesArray['one'];
     }
+    //Methods end here
           },
 
-//insert code here (Vue)
+
       });
     }
   </script>
