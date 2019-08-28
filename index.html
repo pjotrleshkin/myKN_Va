@@ -112,7 +112,21 @@ th, td {
   vertical-align: middle;
 }
 tr:nth-child(even) {background-color: #f2f2f2;}
-                    
+
+
+
+/*MOBILE DEVICES DESIGN */
+
+@media all and (min-width:569px) and (max-width: 1024px) {
+  /* put your css styles in here */
+.qNumber {
+  color:red;
+}
+}
+
+@media all and (min-width:0px) and (max-width: 568px) {
+  /* put your css styles in here */
+}
         </style>
       </head>
 <body >
@@ -134,7 +148,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
                     <div class='heading text-md-center text-sm-center  text-xs-right' style = 'border: #4bafe8 solid 1px; margin-bottom: 40px; border-radius:30px'>
                       <h1 > {{ quiz.title }}</h1>
                       <br>
-                      <h2>Question {{questionIndex +1}} of 5</h2>
+                      <h2 class = 'qNumber'>Question {{questionIndex +1}} of 5</h2>
                     </div>
                                         <v-btn  color="#4bafe8"  v-if="questionIndex >= 1" v-on:click="prev" style = 'color:white;display: block; min-width: 15%;border-radius: 15px;' >
                                                 <span><i class="fas fa-long-arrow-alt-left"> </i> Return to previous question</span>
